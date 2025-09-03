@@ -15,6 +15,7 @@ public class EmployController {
             System.out.println("5 for search youngest employ");
             System.out.println("6 for calculate salary hike");
             int choice = sc.nextInt();
+            sc.nextLine();
             if(choice == 1){
                 System.out.println("enter id");
                 int id = sc.nextInt();
