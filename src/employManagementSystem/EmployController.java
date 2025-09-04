@@ -33,8 +33,8 @@ public class EmployController {
                 sc.nextLine();
 
                 ArrayList<Project> projects = new ArrayList<>();
-                for (int i = 0; i < projectNumber; i++) {
-                    System.out.println("enter project status (completed/running):");
+                for (int i = 1; i <= projectNumber; i++) {
+                    System.out.println("enter project "+i+" status (completed/running):");
                     String status = sc.nextLine();
                     projects.add(new Project(status));
                 }

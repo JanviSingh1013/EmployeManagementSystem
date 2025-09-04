@@ -1,7 +1,6 @@
 package employManagementSystem;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class Employ {
     private int id;

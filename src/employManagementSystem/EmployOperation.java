@@ -27,12 +27,19 @@ public class EmployOperation {
     }
 
 
-    public void display(Employ emp){
-        System.out.println("id is: "+emp.getId());
-        System.out.println("name is: "+emp.getName());
-        System.out.println("age is: "+emp.getAge());
-        System.out.println("salary is: "+emp.getSalary());
+    public void display(Employ emp) {
+        // Print header
+        System.out.printf("%-10s %-15s %-5s %-10s%n", "ID", "Name", "Age", "Salary");
+        System.out.println("----------------------------------------------------");
+
+        // Print employee data in row
+        System.out.printf("%-10d %-15s %-5d %-10.2f%n",
+                emp.getId(),
+                emp.getName(),
+                emp.getAge(),
+                emp.getSalary());
     }
+
     public void searchById(int id){
         for (int i = 0; i < arrEmp.size(); i++) {
             if(id == arrEmp.get(i).getId()){
@@ -94,7 +101,7 @@ public class EmployOperation {
     public void calculateSalaryHike(){
         for (int i = 0; i < arrEmp.size(); i++) {
             Employ emp = arrEmp.get(i);
-            if(emp.getProjects() != null && emp.getProjects().size() == 2){
+            if(emp.getProjects() != null && emp.getProjects().size() >= 2){
                 int completedProject = 0;
                 int runningProject = 0;
                 for (int j = 0; j < emp.getProjects().size(); j++) {
@@ -106,13 +113,14 @@ public class EmployOperation {
                         runningProject++;
                     }
                 }
-                if(completedProject == 2){
+
+                if(completedProject >= 2){
                     emp.setSalary(emp.getSalary() * .30);
+                    System.out.println(emp.getName() + " got 30% hike. New Salary: " + emp.getSalary());
                 } else if (runningProject == 2) {
                     emp.setSalary(emp.getSalary() * 1.15);
+                    System.out.println(emp.getName() + " got 15% hike. New Salary: " + emp.getSalary());
                 }
-            }else {
-                System.out.println("not eligible for salary hike....");
             }
         }
     }
