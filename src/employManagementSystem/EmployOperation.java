@@ -98,31 +98,45 @@ public class EmployOperation {
         }
     }
 
-    public void calculateSalaryHike(){
+    public void calculateSalaryHikeById(int id) {
+        Employ emp = null;
+
         for (int i = 0; i < arrEmp.size(); i++) {
-            Employ emp = arrEmp.get(i);
-            if(emp.getProjects() != null && emp.getProjects().size() >= 2){
-                int completedProject = 0;
-                int runningProject = 0;
-                for (int j = 0; j < emp.getProjects().size(); j++) {
-                    Project p = emp.getProjects().get(j);
-
-                    if (p.getStatus().equalsIgnoreCase("completed")) {
-                        completedProject++;
-                    } else if (p.getStatus().equalsIgnoreCase("running")) {
-                        runningProject++;
-                    }
-                }
-
-                if(completedProject >= 2){
-                    emp.setSalary(emp.getSalary() * .30);
-                    System.out.println(emp.getName() + " got 30% hike. New Salary: " + emp.getSalary());
-                } else if (runningProject == 2) {
-                    emp.setSalary(emp.getSalary() * 1.15);
-                    System.out.println(emp.getName() + " got 15% hike. New Salary: " + emp.getSalary());
-                }
+            if (arrEmp.get(i).getId() == id) {
+                emp = arrEmp.get(i);
+                break;
             }
         }
+
+        if (emp == null) {
+            System.out.println("no employee found with id " + id);
+            return;
+        }
+
+        if (emp.getProjects() != null && emp.getProjects().size() >= 2) {
+            int completedProject = 0;
+
+            for (int j = 0; j < emp.getProjects().size(); j++) {
+                Project p = emp.getProjects().get(j);
+                if (p.isStatus()) {
+                    completedProject++;
+                }
+            }
+
+            if (completedProject >= 2) {
+                emp.setSalary(emp.getSalary() * 1.30);
+                System.out.println(emp.getName() + " got 30% hike.");
+            } else {
+                emp.setSalary(emp.getSalary() * 1.15);
+                System.out.println(emp.getName() + " got 15% hike.");
+            }
+
+            display(emp);
+
+        } else {
+            System.out.println("employee with id " + id + " has less than 2 projects  not eligible for salary hike.... Try again.");
+        }
     }
+
 
 }

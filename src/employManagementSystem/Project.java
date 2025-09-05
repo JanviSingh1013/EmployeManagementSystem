@@ -1,13 +1,19 @@
 package employManagementSystem;
 
-import java.util.ArrayList;
-
 public class Project {
-    private String status;
-    public Project(String status){
+    private int projectId;
+    private boolean status;
+
+    public Project(int projectId, boolean status) {
+        this.projectId = projectId;
         this.status = status;
     }
-    public String getStatus(){
+
+    public int getProjectId() {
+        return projectId;
+    }
+
+    public boolean isStatus() {
         return status;
     }
 }

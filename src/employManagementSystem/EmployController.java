@@ -34,9 +34,12 @@ public class EmployController {
 
                 ArrayList<Project> projects = new ArrayList<>();
                 for (int i = 1; i <= projectNumber; i++) {
-                    System.out.println("enter project "+i+" status (completed/running):");
-                    String status = sc.nextLine();
-                    projects.add(new Project(status));
+                    System.out.println("enter projectId of project "+i+" : ");
+                    int projectId = sc.nextInt();
+                    System.out.println("press 1 for completed or 2 for running:");
+                    int statusInput = sc.nextInt();
+                    boolean status = (statusInput == 1);
+                    projects.add(new Project(projectId, status));
                 }
                 emp.setProjects(projects);
             } else if(choice == 2){
@@ -53,7 +56,9 @@ public class EmployController {
             } else if (choice == 5) {
                 oprtn.searchYoungestEmploy();
             } else if (choice == 6) {
-                oprtn.calculateSalaryHike();
+                System.out.println("enter employee id to calculate hike: ");
+                int id = sc.nextInt();
+                oprtn.calculateSalaryHikeById(id);
             }
             System.out.println("want to continue operation then press y/Y");
             ch = sc.next().charAt(0);
