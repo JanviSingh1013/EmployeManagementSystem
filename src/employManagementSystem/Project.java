@@ -4,7 +4,7 @@ public class Project {
     private int projectId;
     private boolean status;
 
-    public Project(int projectId, boolean status) {
+    Project(int projectId, boolean status) {
         this.projectId = projectId;
         this.status = status;
     }
